@@ -1,0 +1,137 @@
+/* HomeServices.css */
+
+/* Container with Background */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  margin-top: 80px;
+  /* Background Image */
+  /* background: url('../assets/images/image.png') center/cover no-repeat; */
+  position: relative;
+  width: 100%;
+  height: 520px;
+  min-height: 300px;
+  background: linear-gradient(to right, #f8f9fa, #e0e7ff); /* Soft blue gradient */
+  
+}
+
+
+/* Background Overlay for Light Contrast */
+.home-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  
+}
+
+/* Ensure content is above overlay */
+.home-title,
+.services-box,
+.stats-container {
+  position: relative;
+  z-index: 2;
+}
+.home-title {
+  color: #222; /* Darker shade */
+  text-shadow: 5px 3px 5px rgba(0,0,0,0.25); /* Light shadow for contrast */
+}
+
+
+/* Title */
+.home-title {
+  font-size: 32px;
+  font-weight: bold;
+  color:#333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Service Box */
+.services-box {
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3 ease;
+  cursor: pointer;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Service Title */
+.services-box h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color:#444;
+  margin-bottom: 16px;
+}
+
+/* Grid Layout */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Service Card */
+.service-card {
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
+}
+
+/* .service-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain; Ensures the image doesn't get cut
+} */
+
+
+/* Service Name */
+.service-card p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Rating & Customers Section */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.stats-box {
+  text-align: center;
+}
+
+.stats-box span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.stats-box p {
+  color: #666;
+  font-size: 14px;
+}

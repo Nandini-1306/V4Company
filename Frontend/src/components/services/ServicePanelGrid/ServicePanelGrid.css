@@ -1,0 +1,136 @@
+.service-panel-grid {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.sub-service {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.sub-service h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.sub-service ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sub-service li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.sub-service li:hover {
+  background-color: #f9f9f9;
+}
+
+.service-details {
+  flex: 1;
+}
+
+.service-name {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.service-description {
+  font-size: 13px;
+  color: #666;
+}
+
+.service-price-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.service-price {
+  font-weight: 600;
+  color: #333;
+  min-width: 70px;
+  text-align: right;
+}
+
+.bestseller-badge {
+  display: inline-block;
+  background-color: #ebf5ff;
+  color: #0066cc;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.add-btn {
+  background-color: white;
+  color: #8a4efc;
+  border: 1px solid #8a4efc;
+  border-radius: 4px;
+  padding: 6px 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #8a4efc;
+  color: white;
+}
+
+.service-image {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-left: 15px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.rating-star {
+  color: #ffc107;
+  margin-right: 2px;
+}
+
+.service-info {
+  margin-top: 15px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.info-icon {
+  color: #666;
+  margin-right: 8px;
+  min-width: 15px;
+}
