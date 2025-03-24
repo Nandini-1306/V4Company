@@ -1,0 +1,53 @@
+/* ClickableImage.css */
+
+/* Wrapper for Image */
+.clickable-image-wrapper {
+  width: 90%; /* Adds margin from left and right */
+  max-width: 1200px; /* Prevents it from getting too large */
+  margin: 0 auto; /* Centers the content */
+  display: flex;
+  justify-content: center;
+}
+
+/* Clickable Image */
+.clickable-image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+
+/* Hover Effect */
+.clickable-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Image inside Clickable Image */
+.clickable-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover Effect on Image */
+.clickable-image:hover img {
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .clickable-image-wrapper {
+    width: 95%; /* Slightly wider for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .clickable-image-wrapper {
+    width: 98%; /* Almost full width on mobile */
+  }
+}
