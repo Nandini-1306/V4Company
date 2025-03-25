@@ -1,0 +1,47 @@
+.promise-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.promise-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.promise-items {
+  margin-bottom: 15px;
+}
+
+.promise-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.promise-item-icon {
+  margin-right: 10px;
+  color: #8a4efc;
+  font-size: 14px;
+}
+
+.promise-item-text {
+  font-size: 14px;
+  color: #333;
+}
+
+.promise-seal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.promise-seal img {
+  width: 50px;
+  height: 50px;
+  opacity: 0.8;
+}
