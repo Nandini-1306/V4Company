@@ -1,0 +1,156 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 12px 40px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+}
+
+/* Sticky Navbar when scrolling */
+.navbar.scrolled {
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Left - Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #432818;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    color:  #432818;
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Centered search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 45%;
+    justify-content: center;
+}
+
+/* Location bar */
+.location-bar,
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #f8f8f8;
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 220px;
+    border: 1px solid #e0e0e0;
+}
+
+.location-bar input,
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: 8px;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.dropdown-icon {
+    font-size: 14px;
+    color: gray;
+    margin-left: 5px;
+}
+
+/* Right-side icons */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.icons .icon {
+    font-size: 22px;
+    cursor: pointer;
+    color:  #432818;
+    transition: color 0.2s;
+}
+
+.icons .icon:hover {
+    color: #ff6600;
+}
+
+/* Push content down so it doesn't get hidden behind the fixed navbar */
+.body-content {
+    margin-top: 80px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .search-container {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .search-container,
+    .icons {
+        display: none;
+    }
+
+    .search-container.show,
+    .icons.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-container.show {
+        align-items: center;
+        gap: 15px;
+    }
+
+    .icons.show {
+        justify-content: center;
+        gap: 15px;
+        padding-bottom: 10px;
+    }
+}
