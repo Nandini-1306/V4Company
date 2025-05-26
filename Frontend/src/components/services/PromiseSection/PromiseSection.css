@@ -1,19 +1,19 @@
 .promise-section {
-  background-color: white;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-  margin-bottom: 20px;
+  padding: 16px;
 }
 
-.promise-section h2 {
+.promise-section h3 {
   font-size: 18px;
-  font-weight: 600;
   margin-bottom: 15px;
   color: #333;
 }
 
-.promise-items {
+.promise-list {
+  list-style-type: none;
+  padding: 0;
   margin-bottom: 15px;
 }
 
@@ -23,25 +23,19 @@
   margin-bottom: 10px;
 }
 
-.promise-item-icon {
+.check-icon {
+  color: #6c2dc7;
   margin-right: 10px;
-  color: #8a4efc;
   font-size: 14px;
 }
 
-.promise-item-text {
-  font-size: 14px;
-  color: #333;
-}
-
-.promise-seal {
+.trust-badge {
   display: flex;
-  align-items: center;
   justify-content: flex-end;
 }
 
-.promise-seal img {
-  width: 50px;
-  height: 50px;
-  opacity: 0.8;
+.trust-badge img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }

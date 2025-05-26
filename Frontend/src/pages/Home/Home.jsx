@@ -6,7 +6,7 @@ import ClickableImage from '../../components/ClickableImage/ClickableImage.jsx'
 function Home(){
     return (
         <div>
-            <HomeServices />
+            <HomeServices/>
             <MostBookedServices />
             <ClickableImage />
             <MostBookedServices />

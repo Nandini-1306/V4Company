@@ -1,23 +1,54 @@
-import React from "react";
-import "./ServiceNavigation.css";
+.service-navigation {
+  padding-right: 15px;
+}
 
-const ServiceNavigation = ({ subServices }) => {
-  return (
-    <div className="service-navigation">
-      {subServices.map(sub => (
-        <button 
-          key={sub.id} 
-          className="service-nav-button"
-          onClick={() => document.getElementById(sub.id).scrollIntoView({ behavior: 'smooth' })}
-        >
-          <div className="icon-container">
-            <img src={sub.icon} alt={sub.name} />
-          </div>
-          <p>{sub.name}</p>
-        </button>
-      ))}
-    </div>
-  );
-};
+.service-navigation h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #333;
+}
 
-export default ServiceNavigation;
+.service-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.service-nav-button {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  box-shadow: none;
+}
+
+.service-nav-button.active {
+  border-color: #6c2dc7;
+  background-color: #f5f0ff;
+}
+
+.icon-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.icon-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.service-nav-button p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}

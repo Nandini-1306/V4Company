@@ -1,55 +1,49 @@
 .offers {
-  background-color: white;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 20px;
+  padding: 16px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.offer-header {
   display: flex;
   align-items: flex-start;
-}
-
-.offers h2 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #333;
-}
-
-.offers p {
-  color: #666;
-  font-size: 14px;
   margin-bottom: 10px;
 }
 
-.offers-icon {
-  margin-right: 15px;
+.offer-icon {
+  margin-right: 10px;
+  color: #6c2dc7;
+  font-size: 18px;
 }
 
-.icon-circle {
-  width: 36px;
-  height: 36px;
-  background-color: #f0e6ff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #8a4efc;
+.offers-content h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 0;
+  color: #333;
 }
 
-.offers-content {
-  flex: 1;
+.offers-content p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
 }
 
 .view-more {
   display: flex;
   align-items: center;
-  color: #8a4efc;
+  justify-content: space-between;
+  color: #6c2dc7;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid #eee;
 }
 
 .more-icon {
-  margin-left: 5px;
   font-size: 12px;
 }

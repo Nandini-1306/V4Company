@@ -6,6 +6,7 @@ import Cart from './pages/Cart/Cart';
 import Navbar from "./components/Navbar/Navbar.jsx";
 import LoginPopup from "./components/LoginPopup/LoginPopup.jsx";
 import Footer from './components/Footer/Footer.jsx';
+import ServiceDetail from "./pages/ServiceDetail/ServiceDetail";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
           </Routes>
           <Footer />
         </>
