@@ -12,7 +12,7 @@ const LoadingScreen = ({ onFinish }) => {
 
     setTimeout(() => {
       clearInterval(interval);
-      onFinish(); // Call the function to hide the loader when loading is complete
+      // onFinish(); // Call the function to hide the loader when loading is complete
     }, 2000);
 
     return () => clearInterval(interval);
