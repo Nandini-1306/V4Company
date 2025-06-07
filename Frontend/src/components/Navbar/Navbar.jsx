@@ -20,10 +20,8 @@ const Navbar = ({ setShowLogin }) => {
       <div className="max-w-screen-xl mx-auto flex items-center justify-between px-6 md:px-12 h-16">
 
         {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <span className="text-white bg-[#432818] px-3 py-1 rounded-md text-lg font-bold">
-            V4
-          </span>
+        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/")}>
+          <span className="text-white bg-[#432818] px-3 py-1 rounded-md text-lg font-bold"> V4 </span>
           <span className="text-[#432818] font-semibold text-lg">Masters</span>
         </div>
 
