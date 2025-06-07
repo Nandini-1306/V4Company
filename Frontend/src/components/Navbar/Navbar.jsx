@@ -2,11 +2,14 @@ import React, { useState } from "react";
 
 const Navbar = ({ setShowLogin }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [location, setLocation] = useState("Khargone");
+  const [location, setLocation] = useState("");
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
   const [locationError, setLocationError] = useState("");
 
-  // Function to get user's current location
+  // Add your Google API key here
+  const GOOGLE_API_KEY = "AIzaSyBCmZkwAbDc8heXP54D_U4Q_ZChXcV1aGw"; // Replace with your actual API key
+
+  // Function to get user's current location using Google Geocoding API
   const getCurrentLocation = () => {
     setIsLoadingLocation(true);
     setLocationError("");
@@ -24,44 +27,93 @@ const Navbar = ({ setShowLogin }) => {
         try {
           const { latitude, longitude } = position.coords;
           
-          // Use OpenStreetMap Nominatim API for reverse geocoding
+          // Debug: Log coordinates to verify they're different
+          console.log(`Current coordinates: ${latitude}, ${longitude}`);
+          console.log(`Accuracy: ${position.coords.accuracy} meters`);
+          
+          // Use Google Geocoding API for reverse geocoding
           const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`,
-            {
-              headers: {
-                'User-Agent': 'V4Masters-App/1.0' // Required by Nominatim
-              }
-            }
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_API_KEY}&language=en`
           );
           
           if (!response.ok) {
-            throw new Error('Failed to fetch location data');
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
           
           const data = await response.json();
+          console.log('Google Geocoding response:', data); // Debug log
           
-          if (data && data.address) {
-            // Extract city/town/village from the address
-            const address = data.address;
-            const city = address.city || 
-                        address.town || 
-                        address.village || 
-                        address.suburb ||
-                        address.neighbourhood ||
-                        address.county ||
-                        address.state_district ||
-                        "Unknown Location";
+          if (data.status === 'OK' && data.results && data.results.length > 0) {
+            // Get the most relevant result (usually the first one)
+            const result = data.results[0];
             
-            setLocation(city);
+            // Extract location components
+            const addressComponents = result.address_components;
+            let locationParts = [];
+            
+            // Find relevant components in priority order
+            const findComponent = (types) => {
+              return addressComponents.find(component => 
+                types.some(type => component.types.includes(type))
+              );
+            };
+            
+            // Priority: locality (city/town) -> sublocality -> administrative_area_level_3 -> administrative_area_level_2
+            const city = findComponent(['locality']);
+            const sublocality = findComponent(['sublocality', 'sublocality_level_1']);
+            const area3 = findComponent(['administrative_area_level_3']);
+            const area2 = findComponent(['administrative_area_level_2']);
+            const state = findComponent(['administrative_area_level_1']);
+            
+            // Build location string with appropriate components
+            if (city) {
+              locationParts.push(city.long_name);
+            } else if (sublocality) {
+              locationParts.push(sublocality.long_name);
+            } else if (area3) {
+              locationParts.push(area3.long_name);
+            } else if (area2) {
+              locationParts.push(area2.long_name);
+            }
+            
+            // Add state if it's different from the main location
+            if (state && !locationParts.includes(state.long_name)) {
+              locationParts.push(state.long_name);
+            }
+            
+            const finalLocation = locationParts.length > 0 
+              ? locationParts.join(', ') 
+              : result.formatted_address.split(',')[0]; // Fallback to first part of formatted address
+            
+            console.log('Final location:', finalLocation); // Debug log
+            setLocation(finalLocation);
+            
+          } else if (data.status === 'ZERO_RESULTS') {
+            throw new Error('No location data found for these coordinates');
+          } else if (data.status === 'OVER_QUERY_LIMIT') {
+            throw new Error('Google API quota exceeded');
+          } else if (data.status === 'REQUEST_DENIED') {
+            throw new Error('Google API request denied - check your API key');
           } else {
-            throw new Error('No location data found');
+            throw new Error(`Google API error: ${data.status}`);
           }
         } catch (error) {
           console.error('Error getting location:', error);
-          setLocationError("Failed to get location details");
+          
+          // Provide more specific error messages
+          if (error.message.includes('API key')) {
+            setLocationError("Invalid API key. Please check your Google API configuration.");
+          } else if (error.message.includes('quota')) {
+            setLocationError("API quota exceeded. Please try again later.");
+          } else if (error.message.includes('HTTP error')) {
+            setLocationError("Network error. Please check your connection.");
+          } else {
+            setLocationError("Failed to get location details");
+          }
+          
           // Fallback: just use coordinates
           const { latitude, longitude } = position.coords;
-          setLocation(`${latitude.toFixed(4)}, ${longitude.toFixed(4)}`);
+          setLocation(`${latitude.toFixed(4)}`, `${longitude.toFixed(4)}`);
         } finally {
           setIsLoadingLocation(false);
         }
@@ -85,8 +137,8 @@ const Navbar = ({ setShowLogin }) => {
       },
       {
         enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 600000, // 10 minutes
+        timeout: 15000,
+        maximumAge: 300000, // Cache for 5 minutes to avoid excessive API calls
       }
     );
   };

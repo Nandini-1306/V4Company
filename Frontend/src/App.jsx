@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import LoginPopup from "./components/LoginPopup/LoginPopup.jsx";
 import Footer from './components/Footer/Footer.jsx';
 import ServiceDetail from "./pages/ServiceDetail/ServiceDetail";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -25,7 +26,7 @@ function App() {
       {loading ? (
         <LoadingScreen />
       ) : (
-        <>
+        <CartProvider>
           {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
           <Navbar setShowLogin={setShowLogin} />
           <Routes>
@@ -34,7 +35,7 @@ function App() {
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
           </Routes>
           <Footer />
-        </>
+        </CartProvider>
       )}
     </>
   );
