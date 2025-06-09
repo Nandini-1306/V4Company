@@ -29,7 +29,7 @@ const LoginPopup = ({ setShowLogin }) => {
         : { useremail: email, userpassword: password };
 
     try {
-      const response = await fetch(`http://localhost:5000/${endpoint}`, {
+      const response = await fetch(`http://localhost:8080/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

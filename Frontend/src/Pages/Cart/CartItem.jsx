@@ -6,10 +6,15 @@ const CartItem = ({ item }) => {
   const [isUpdating, setIsUpdating] = useState(false);
 
   const handleQuantityChange = async (newQuantity) => {
-    setIsUpdating(true);
+  setIsUpdating(true);
+  if (newQuantity <= 0) {
+    await removeFromCart(item.service_id);
+  } else {
     await updateQuantity(item.service_id, newQuantity);
-    setIsUpdating(false);
-  };
+  }
+  setIsUpdating(false);
+};
+
 
   const handleRemove = async () => {
     setIsUpdating(true);
