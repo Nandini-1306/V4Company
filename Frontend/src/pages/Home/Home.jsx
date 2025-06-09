@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import HomeServices from "../../components/HomeServices/HomeServices.jsx";
 import MostBookedServices from '../../components/MostBookedService/MostBookedServices.jsx'
