@@ -8,6 +8,7 @@ import LoginPopup from "./components/LoginPopup/LoginPopup.jsx";
 import Footer from './components/Footer/Footer.jsx';
 import ServiceDetail from "./pages/ServiceDetail/ServiceDetail";
 import { CartProvider } from "./context/CartContext";
+import Payment  from "./Pages/Payment/Payment.jsx";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -33,6 +34,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
+             <Route path="/payment" element={<Payment />} />
+
           </Routes>
           <Footer />
         </CartProvider>
