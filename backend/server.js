@@ -38,7 +38,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // MongoDB Connection
-const MONGODB_URI = 'mongodb+srv://V4:Nan%40%261234@v4.lo8j7.mongodb.net/V4?retryWrites=true&w=majority&appName=V4';
+const MONGODB_URI = process.env.MONGO_URI || 'mongodb+srv://V4:Nan%40%261234@v4.lo8j7.mongodb.net/V4?retryWrites=true&w=majority&appName=V4';
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,

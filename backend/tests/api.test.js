@@ -19,7 +19,7 @@ let testProvider;
 let testBooking;
 
 beforeAll(async () => {
-  const MONGODB_URI = process.env.MONGO_URI_TEST || 'mongodb+srv://V4:Nan%40%261234@v4.lo8j7.mongodb.net/testdb?retryWrites=true&w=majority&appName=V4';
+  const MONGODB_URI = process.env.MONGO_URI || 'mongodb+srv://V4:Nan%40%261234@v4.lo8j7.mongodb.net/testdb?retryWrites=true&w=majority&appName=V4';
   await mongoose.connect(MONGODB_URI);
   
   // Create testUser, testService, testProvider for dependent tests
