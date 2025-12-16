@@ -23,7 +23,7 @@ console.log("Razorpay Key ID:", process.env.RAZORPAY_KEY_ID); // Should not be u
 console.log("Razorpay Key Secret:", process.env.RAZORPAY_KEY_SECRET); // Should not be undefined
 
 const app = express();
-const PORT =  8080;
+const PORT = process.env.PORT || 8080;
 const JWT_SECRET = 'your_secret_key'; // ⚠️ Move this to .env in production
 
 // CORS options
